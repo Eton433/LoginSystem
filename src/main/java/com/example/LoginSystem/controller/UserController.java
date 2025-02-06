@@ -19,10 +19,10 @@ public class UserController {
     }
     @PostMapping("/register")
     public User registerUser(@RequestBody User user){
-        System.out.println("🔵 收到註冊請求：" + user.getUsername());
-
-        // 🔹 記錄請求細節
-        System.out.println("🔵 註冊的密碼：" + user.getPassword());
         return userService.registerUser(user);
+    }
+    @PostMapping("/login")
+    public boolean loginUser(@RequestBody User user){
+        return userService.loginUser(user.getUsername(), user.getPassword());
     }
 }
